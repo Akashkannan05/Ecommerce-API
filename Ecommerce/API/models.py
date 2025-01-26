@@ -1,9 +1,6 @@
 from django.db import models
 from django.conf import settings
 
-
-# Create your models here.
-
 User=settings.AUTH_USER_MODEL
 
 class CategoryModel(models.Model):
@@ -85,9 +82,3 @@ class ProfileModel(models.Model):
 
     def __str__(self):
         return f"{self.PhoneNumber}"
-
-# class ProfileModel(AbstractUser):
-#     PhoneNumber=models.CharField(max_length=13)
-#     Address=models.TextField()
-#     DateOfBirth=models.DateField(null=True)
-#     ProfilePic=models.ImageField(blank=True,null=True,upload_to="images/profile")
