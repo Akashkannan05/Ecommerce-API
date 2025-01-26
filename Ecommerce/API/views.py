@@ -192,7 +192,7 @@ class ListCreateOrderView(generics.ListCreateAPIView):
             product=OrderItemModel.objects.filter(Order=i)
             Others.append(OrderItemSerializer(product,many=True,context={'request':request}).data)
         Result["Other"]=Others
-        print(Result)
+       
         return Response(Result,status=status.HTTP_200_OK)
 
     def perform_create(self, serializer):
@@ -203,7 +203,7 @@ class ListCreateOrderView(generics.ListCreateAPIView):
             Product.Inventory=Product_quantity-quantity
             Product.save()
             serializer.save()
-            print(serializer.data)
+           
         else:
             if(Product_quantity<=1):
                 msg="Only "+str(Product_quantity)+" product is available!"
@@ -242,7 +242,6 @@ class OrderStatusUpdateView(generics.UpdateAPIView):
         
         qs=OrderItemModel.objects.filter(Order__pk=pk)
         serializer=OrderItemSerializer(qs,context={'request':request},many=True).data
-        # serializer['Status']=qs.Order.Status
         return Response(serializer,status=status.HTTP_200_OK)
 
 OrderStatusUpdateViewClass=OrderStatusUpdateView.as_view()
@@ -302,7 +301,6 @@ class CartDetailView(generics.RetrieveAPIView):
         query=CartModel.objects.filter(User=user)
         product=get_object_or_404(query,pk=pk)
         serialize=CartSerializer(product)
-        #serialize the product to get the price
         product_serilize=ProductSerializer(product.Product,context={"request":request})
         price=product_serilize.data['Price']
         serialize=serialize.data
