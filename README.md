@@ -32,7 +32,8 @@ Make sure you have the following installed before running the project:
 ## **NOTE:**
 >The debug is set `False` (debug=False) in the settings so make sure you turn it `True` if you are running this project locally.
 >Ensure to configure the `ALLOWED_HOSTS` setting appropriately for your environment.  
->There is no model data with this project
+>There is no model data with this project.
+>Make sure to create the virtual environment as its not attached with this project
 
 ---
 
